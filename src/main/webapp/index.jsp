@@ -11,7 +11,7 @@
 <p>Opciones sobre la base de daros de ignacio Díaz-Guardamino:</p>
 <ul>
 <li><a href="listar">Listar</a></li>
-<li><a href="insertar?palabra=test1">Insertar</a></li>
+<li><a href="insertar?palabra=test">Insertar</a></li>
 </ul>
 </body>
 </html>

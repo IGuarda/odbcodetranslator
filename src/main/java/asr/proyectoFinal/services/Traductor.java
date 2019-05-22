@@ -11,9 +11,9 @@ public class Traductor{
 public static String translate(String palabra){
 	LanguageTranslator service = new LanguageTranslator();
 
-	service.setUsernameAndPassword("apikey","j5mqVbQERSzuQuk-btE-CrncvPAShUFsDkDyNQauseaM");
-
-		//languageTranslator.setEndPoint("https://gateway-lon.watsonplatform.net/language-translator/api");
+	//service.setUsernameAndPassword("apikey","j5mqVbQERSzuQuk-btE-CrncvPAShUFsDkDyNQauseaM");
+	service.setApiKey("j5mqVbQERSzuQuk-btE-CrncvPAShUFsDkDyNQauseaM");
+	service.setEndPoint("https://gateway-lon.watsonplatform.net/language-translator/api");
 		 
 	TranslateOptions translateOptions = new TranslateOptions.Builder()
 	 .addText(palabra)

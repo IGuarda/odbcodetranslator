@@ -23,7 +23,7 @@ public class Traductor
 		LanguageTranslator languageTranslator = new LanguageTranslator();
 		languageTranslator.setUsernameAndPassword("apikey","j5mqVbQERSzuQuk-btE-CrncvPAShUFsDkDyNQauseaM");
 
-		languageTranslator.setEndPoint("https://gateway.watsonplatform.net/language-translator/api");
+		languageTranslator.setEndPoint("https://gateway-lon.watsonplatform.net/language-translator/api");
 		 
 		TranslateOptions translateOptions = new
 		TranslateOptions.Builder()

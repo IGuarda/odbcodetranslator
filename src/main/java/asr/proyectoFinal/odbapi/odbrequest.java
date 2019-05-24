@@ -43,10 +43,9 @@ public class odbrequest {
      String JSON =response.toString();
      JsonParser parser = new JsonParser();
      JsonObject rootObj = parser.parse(JSON).getAsJsonObject();
-     JsonArray datos = rootObj.getAsJsonArray("dtc_data");
+     JsonObject datos = rootObj.getAsJsonObject("dtc_data");
      String salida = id;
-     if(datos.size()>0)
-    	 salida = "System: "+datos.get(0).getAsJsonObject().get("system").getAsString()+" Fault: "+datos.get(0).getAsJsonObject().get("fault").getAsString();
+     salida = "System: "+datos.getAsJsonObject().get("system").getAsString()+" Fault: "+datos.getAsJsonObject().get("fault").getAsString();
      return salida;
 	} catch (Exception e) {
 		 return e.toString();

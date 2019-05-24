@@ -48,9 +48,11 @@ public class Controller extends HttpServlet {
 					out.println("Palabras en la BD Cloudant:<br />"  );
 					Iterator<Palabra> iterator = store.getAll().iterator();
 					String s;
-					while (iterator.hasNext()) {
+					int i=5;
+					while (iterator.hasNext()&&i>0) {
 						s=iterator.next().getName();
 				        out.println("<a href=\"insertar?palabra=" +s+"\">"+s+"</a> <br>");
+				        i--;
 				    }
 				}
 				break;

@@ -66,12 +66,12 @@ public class Controller extends HttpServlet {
 				{
 					out.println("usage: /insertar?palabra=palabra_a_traducir");
 				}
-				if(vin==null)
-				{
-					vin="WBAES26C05D";//vin de muestra
-				}
 				else
 				{
+					if(vin==null)
+					{
+						vin="WBAES26C05D";//vin de muestra
+					}
 					if(store.getDB() == null) 
 					{
 						out.println(String.format("Palabra: %s", palabra));
@@ -84,8 +84,8 @@ public class Controller extends HttpServlet {
 						String fallo = odbrequest.getodbcode(odbcode,vin,"EN");
 						palabra.setName(odbcode);
 						store.persist(palabra);
-					    out.println(String.format("resultado:<br> %s", fallo));		
-					    out.println(Traductor.translate("hola"));
+					    out.println(String.format("resultado:<br> %s <br>", fallo));		
+					    out.println(Traductor.translate("hola", "es", "en", false));
 						} catch (Exception e) {
 							out.println("error en el codigo de fallo "+e.toString());
 						}

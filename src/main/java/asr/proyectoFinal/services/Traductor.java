@@ -1,4 +1,4 @@
-package asr.proyectoFinal.services;
+/*package asr.proyectoFinal.services;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
@@ -31,9 +31,9 @@ public static String translate(String palabra){
 		traduccionPrimera =	traducciones.get(0).getAsJsonObject().get("translation").getAsString();
 	return traduccionPrimera;
 	}
-}
+}*/
 		
-/*		
+	
 package asr.proyectoFinal.services;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
@@ -63,7 +63,7 @@ public class Traductor
 
 		LanguageTranslator languageTranslator = new LanguageTranslator("2019-04-09", options);
 
-		languageTranslator.setEndPoint("https://gateway-lon.watsonplatform.net/language-translator/api");
+		//languageTranslator.setEndPoint("https://gateway-lon.watsonplatform.net/language-translator/api");
 		
 		TranslateOptions translateOptions = new
 		TranslateOptions.Builder()
@@ -86,4 +86,4 @@ public class Traductor
 		traducciones.get(0).getAsJsonObject().get("translation").getAsString();
 		return traduccionPrimera;
 	}
-}*/
+}

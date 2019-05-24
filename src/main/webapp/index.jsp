@@ -10,12 +10,12 @@
 <hr />
 <p>Opciones sobre la base de daros de ignacio Díaz-Guardamino:</p>
 <ul>
-<li><a href="listar">Listar</a></li>
-<li><a href="insertar?palabra=P0001">Insertar</a></li>
+<li><a href="listar">listar favoritos</a></li>
+<%--<li><a href="insertar?palabra=P0001">Insertar</a></li> --%>
 
 </ul>
-<form action="insertar" >
-<input type="text" name="palabra" value="P0001"><br>
+<form action="mostrar" >
+<input type="text" name="codigo" value="P0001"><br>
 <input type="text" name="vin" value="WBAES26C05D"><br>
  <input type="submit" value="Submit">
 </form>

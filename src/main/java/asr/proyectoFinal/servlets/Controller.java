@@ -27,7 +27,7 @@ import asr.proyectoFinal.odbapi.odbrequest;
 /**
  * Servlet implementation class Controller
  */
-@WebServlet(urlPatterns = {"/listar", "/insertar", "/hablar"})
+@WebServlet(urlPatterns = {"/listar", "/insertar", "/mostrar"})
 public class Controller extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -59,12 +59,12 @@ public class Controller extends HttpServlet {
 				
 			case "/insertar":
 				Palabra palabra = new Palabra();
-				String odbcode = request.getParameter("palabra");
+				String odbcode = request.getParameter("codigo");
 				String vin = request.getParameter("vin");
 
 				if(odbcode==null)
 				{
-					out.println("usage: /insertar?palabra=palabra_a_traducir");
+					out.println("usage: /insertar?codigo=codigo_a_insertarr");
 				}
 				else
 				{
@@ -74,22 +74,46 @@ public class Controller extends HttpServlet {
 					}
 					if(store.getDB() == null) 
 					{
-						out.println(String.format("Palabra: %s", palabra));
+						out.println("Error en la base de datos");
 					}
 					else
 					{
-						//parametro = Traductor.translate(parametro, "es", "en", false);
-						//parametro = Traductor.translate(parametro);
+						
 						try {
-						String fallo = odbrequest.getodbcode(odbcode,vin,"EN");
 						palabra.setName(odbcode);
 						store.persist(palabra);
-					    out.println(String.format("resultado:<br> %s <br>", fallo));		
-					    out.println(Traductor.translate("hola"));
+					    out.println("información guardada correctamente, <a href=\"listar\">mostrar favoritos</a> <br> ");		
+					    //out.println(Traductor.translate("hola"));
 						} catch (Exception e) {
 							out.println("error en el codigo de fallo "+e.toString());
 						}
 					}
+				}
+				break;
+			case "/mostrar":
+				Palabra palabra1 = new Palabra();
+				String odbcode1 = request.getParameter("codigo");
+				String vin1 = request.getParameter("vin");
+
+				if(odbcode1==null)
+				{
+					out.println("usage: /mostrar?codigo=codigo");
+				}
+				else
+				{
+					if(vin1==null)
+					{
+						vin1="WBAES26C05D";//vin de muestra
+					}
+					try {
+						String fallo = odbrequest.getodbcode(odbcode1,vin1,"EN");
+						palabra1.setName(odbcode1);
+					    out.println(String.format("resultado:<br> %s <br><a href=\"insertar?codigo=%s&vin=%s\">Guardar en favoritos</a>", fallo,odbcode1,vin1));		
+					    //out.println(Traductor.translate("hola"));
+						} catch (Exception e) {
+							out.println("error en el codigo de fallo "+e.toString());
+						}
+					
 				}
 				break;
 		}

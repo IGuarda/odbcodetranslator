@@ -61,7 +61,7 @@ public class Controller extends HttpServlet {
 					}
 					else
 					{
-						parametro = Traductor.translate(parametro);
+						parametro = Traductor.translate(parametro, "es", "en", false);
 						palabra.setName(parametro);
 						store.persist(palabra);
 					    out.println(String.format("Almacenada la palabra: %s", palabra.getName()));			    	  

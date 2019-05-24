@@ -1,4 +1,4 @@
-/*package asr.proyectoFinal.services;
+package asr.proyectoFinal.services;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
@@ -31,8 +31,8 @@ public static String translate(String palabra){
 		traduccionPrimera =	traducciones.get(0).getAsJsonObject().get("translation").getAsString();
 	return traduccionPrimera;
 	}
-}*/
-		
+}
+	/*	
 	
 package asr.proyectoFinal.services;
 import com.google.gson.JsonArray;
@@ -57,13 +57,11 @@ public class Traductor
 		else
 			return translate(translate(palabra,sourceModel,"en",conversational),"en",destModel,conversational); //translate to english, then to dest
 		
-		IamOptions options = new IamOptions.Builder()
-			    .apiKey("j5mqVbQERSzuQuk-btE-CrncvPAShUFsDkDyNQauseaM")
-			    .build();
+	
 
-		LanguageTranslator languageTranslator = new LanguageTranslator("2019-04-09", options);
-
-		//languageTranslator.setEndPoint("https://gateway-lon.watsonplatform.net/language-translator/api");
+		LanguageTranslator languageTranslator = new LanguageTranslator("2019-04-09");
+		languageTranslator.setUsernameAndPassword("apikey","j5mqVbQERSzuQuk-btE-CrncvPAShUFsDkDyNQauseaM");
+		languageTranslator.setEndPoint("https://gateway-lon.watsonplatform.net/language-translator/api");
 		
 		TranslateOptions translateOptions = new
 		TranslateOptions.Builder()
@@ -86,4 +84,4 @@ public class Traductor
 		traducciones.get(0).getAsJsonObject().get("translation").getAsString();
 		return traduccionPrimera;
 	}
-}
+}*/

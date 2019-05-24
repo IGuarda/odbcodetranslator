@@ -10,6 +10,7 @@ import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.nio.Buffer;
 import java.nio.file.Files;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -42,8 +43,16 @@ public class Controller extends HttpServlet {
 			case "/listar":
 				if(store.getDB() == null)
 					  out.println("No hay DB");
-				else
-					out.println("Palabras en la BD Cloudant:<br />" + store.getAll());
+				else {
+
+					out.println("Palabras en la BD Cloudant:<br />"  );
+					Iterator<Palabra> iterator = store.getAll().iterator();
+					String s;
+					while (iterator.hasNext()) {
+						s=iterator.next().toString();
+				        out.println("<a href=\"insertar?palabra=" +s+"\">"+s+"</a> <br>");
+				    }
+				}
 				break;
 				
 			case "/insertar":

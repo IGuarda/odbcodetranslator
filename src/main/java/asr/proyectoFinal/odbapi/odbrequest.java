@@ -1,5 +1,6 @@
 package asr.proyectoFinal.odbapi;
 import java.io.BufferedReader;
+import java.io.IOException;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
@@ -12,12 +13,12 @@ import java.net.URL;
  * &code_id=P0001&vin=WBAES26C05D&language=EN' --header 'accept: application/json' --header 'content-type: application/json'
  */
 public class odbrequest {
-	public static String getodbcode(String id, String vin, String lan) {
+	public static String getodbcode(String id, String vin, String lan) throws Exception {
      String url = "https://api.eu.apiconnect.ibmcloud.com/hella-ventures-car-diagnostic-api/api/v1/dtc" + 
      		"?client_id=398f6f60-8d12-439c-938f-1162405d3d44&client_secret=A8xV8kP0hH7oW8tS2kT4cT5tA2pL2sY4rE5rW6rF0dN6dA1yV4" + 
      		"&code_id="+id+"&vin="+vin+"&language="+lan;
      URL obj;
-	try {
+
 		obj = new URL(url);
 	
      HttpURLConnection con = (HttpURLConnection) obj.openConnection();
@@ -48,9 +49,7 @@ public class odbrequest {
      salida = "System: "+datos.getAsJsonObject().get("system").getAsString();
      salida = salida +" Fault: "+datos.getAsJsonObject().get("fault").getAsString();
      return salida;
-	} catch (Exception e) {
-		 return e.toString();
-	}
+
 	
 	}
      /*

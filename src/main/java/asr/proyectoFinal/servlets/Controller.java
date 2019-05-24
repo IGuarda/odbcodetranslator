@@ -49,7 +49,7 @@ public class Controller extends HttpServlet {
 					Iterator<Palabra> iterator = store.getAll().iterator();
 					String s;
 					while (iterator.hasNext()) {
-						s=iterator.next().toString();
+						s=iterator.next().getName();
 				        out.println("<a href=\"insertar?palabra=" +s+"\">"+s+"</a> <br>");
 				    }
 				}
@@ -73,11 +73,14 @@ public class Controller extends HttpServlet {
 					{
 						//parametro = Traductor.translate(parametro, "es", "en", false);
 						//parametro = Traductor.translate(parametro);
-
-						parametro = odbrequest.getodbcode(parametro,"WBAES26C05D","EN");
+						try {
+						String fallo = odbrequest.getodbcode(parametro,"WBAES26C05D","EN");
 						palabra.setName(parametro);
 						store.persist(palabra);
-					    out.println(String.format("resultado:<br> %s", palabra.getName()));			    	  
+					    out.println(String.format("resultado:<br> %s", fallo));		
+						} catch (Exception e) {
+							out.println("error en el codigo de fallo "+e.toString());
+						}
 					}
 				}
 				break;

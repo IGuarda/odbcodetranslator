@@ -27,7 +27,7 @@ import asr.proyectoFinal.odbapi.odbrequest;
 /**
  * Servlet implementation class Controller
  */
-@WebServlet(urlPatterns = {"/listar", "/insertar", "/mostrar"})
+@WebServlet(urlPatterns = {"/listar", "/insertar", "/mostrar", "/iotreceive", "/iotsend"})
 public class Controller extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -48,16 +48,50 @@ public class Controller extends HttpServlet {
 					out.println("Palabras en la BD Cloudant:<br />"  );
 					Iterator<Palabra> iterator = store.getAll().iterator();
 					String s;
-					int i=5;
+					int i=100;
 					while (iterator.hasNext()&&i>0) {
 						s=iterator.next().getName();
-				        out.println("<a href=\"insertar?palabra=" +s+"\">"+s+"</a> <br>");
-				        i--;
+						if (s.charAt(0)!='$'){
+					        out.println("<a href=\"insertar?palabra=" +s+"\">"+s+"</a> <br>");
+					        i--;
+						}
 				    }
 				}
 				break;
-				
-			case "/insertar":
+			case "/iotreceive":
+				if(store.getDB() == null)
+					  out.println("No hay DB");
+				else {
+
+					out.println("Palabras en la BD Cloudant:<br />"  );
+					Iterator<Palabra> iterator = store.getAll().iterator();
+					Palabra s;
+					int send=0;
+					while (iterator.hasNext()) {
+						s=iterator.next();
+						String cod=s.getName();
+						if (cod.charAt(0)!='$'){
+							send=1;
+							store.delete(s.get_id());
+							try {
+								String fallo1 = odbrequest.getodbcode(cod,"WBAES26C05D","EN");
+
+						        out.println(fallo1+"<br>");
+							} catch (Exception e) {
+								out.println("servicio temporalmente no disponible");
+							}					        
+						}
+				    }
+					if(send==0) {
+						out.println("no se ha recibido información, esta página se actualiza cada 10 segundos.<script language=\"javascript\">" + 
+								"setTimeout(function(){\r\n" + 
+								"   window.location.reload(1);\r\n" + 
+								"}, 30000);\r\n" + 
+								"</script>");
+					}
+				}
+				break;
+			case "/iotsend":
 				Palabra palabra = new Palabra();
 				String odbcode = request.getParameter("codigo");
 				String vin = request.getParameter("vin");
@@ -80,8 +114,41 @@ public class Controller extends HttpServlet {
 					{
 						
 						try {
-						palabra.setName(odbcode);
+						palabra.setName("$"+odbcode);
 						store.persist(palabra);
+					    out.println("información enviada, <a href=\"iot.jsp\">enviar mas información</a> <br> ");		
+					    //out.println(Traductor.translate("hola"));
+						} catch (Exception e) {
+							out.println("error en el codigo de fallo "+e.toString());
+						}
+					}
+				}
+				break;
+			case "/insertar":
+				Palabra palabra1 = new Palabra();
+				String odbcode1 = request.getParameter("codigo");
+				String vin1 = request.getParameter("vin");
+
+				if(odbcode1==null)
+				{
+					out.println("usage: /insertar?codigo=codigo_a_insertarr");
+				}
+				else
+				{
+					if(vin1==null)
+					{
+						vin1="WBAES26C05D";//vin de muestra
+					}
+					if(store.getDB() == null) 
+					{
+						out.println("Error en la base de datos");
+					}
+					else
+					{
+						
+						try {
+						palabra1.setName(odbcode1);
+						store.persist(palabra1);
 					    out.println("información guardada correctamente, <a href=\"listar\">mostrar favoritos</a> <br> ");		
 					    //out.println(Traductor.translate("hola"));
 						} catch (Exception e) {
@@ -91,24 +158,24 @@ public class Controller extends HttpServlet {
 				}
 				break;
 			case "/mostrar":
-				Palabra palabra1 = new Palabra();
-				String odbcode1 = request.getParameter("codigo");
-				String vin1 = request.getParameter("vin");
+				Palabra palabra11 = new Palabra();
+				String odbcode11 = request.getParameter("codigo");
+				String vin11 = request.getParameter("vin");
 
-				if(odbcode1==null)
+				if(odbcode11==null)
 				{
 					out.println("usage: /mostrar?codigo=codigo");
 				}
 				else
 				{
-					if(vin1==null)
+					if(vin11==null)
 					{
-						vin1="WBAES26C05D";//vin de muestra
+						vin11="WBAES26C05D";//vin de muestra
 					}
 					try {
-						String fallo = odbrequest.getodbcode(odbcode1,vin1,"EN");
-						palabra1.setName(odbcode1);
-					    out.println(String.format("resultado:<br> %s <br><a href=\"insertar?codigo=%s&vin=%s\">Guardar en favoritos</a>", fallo,odbcode1,vin1));		
+						String fallo = odbrequest.getodbcode(odbcode11,vin11,"EN");
+						palabra11.setName(odbcode11);
+					    out.println(String.format("resultado:<br> %s <br><a href=\"insertar?codigo=%s&vin=%s\">Guardar en favoritos</a>", fallo,odbcode11,vin11));		
 					    //out.println(Traductor.translate("hola"));
 						} catch (Exception e) {
 							out.println("error en el codigo de fallo "+e.toString());

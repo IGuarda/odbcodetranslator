@@ -1,5 +1,5 @@
-
-/*import com.google.gson.JsonArray;
+package asr.proyectoFinal.services;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.ibm.watson.developer_cloud.language_translator.v2.LanguageTranslator;
@@ -31,9 +31,9 @@ public static String translate(String palabra){
 		traduccionPrimera =	traducciones.get(0).getAsJsonObject().get("translation").getAsString();
 	return traduccionPrimera;
 	}
-}*/
+}
 		
-		
+/*		
 package asr.proyectoFinal.services;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
@@ -86,4 +86,4 @@ public class Traductor
 		traducciones.get(0).getAsJsonObject().get("translation").getAsString();
 		return traduccionPrimera;
 	}
-}
+}*/

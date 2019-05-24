@@ -4,14 +4,23 @@ import java.io.BufferedReader;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL; 
 /*curl --request GET --url 'https://api.eu.apiconnect.ibmcloud.com/hella-ventures-car-diagnostic-api/api/v1/dtc
  * ?client_id=398f6f60-8d12-439c-938f-1162405d3d44&client_secret=A8xV8kP0hH7oW8tS2kT4cT5tA2pL2sY4rE5rW6rF0dN6dA1yV4
  * &code_id=P0001&vin=WBAES26C05D&language=EN' --header 'accept: application/json' --header 'content-type: application/json'
  */
 public class odbrequest {
-	public static String getodbcode(String palabra, String sourceModel, String destModel, boolean conversational) {
-     String url = "http://api.ipinfodb.com/v3/ip-city/?key=d64fcfdfacc213c7ddf4ef911dfe97b55e4696be3532bf8302876c09ebd06b&ip=74.125.45.100&format=json";
-     URL obj = new URL(url);
+	public static String getodbcode(String id, String vin, String lan) {
+     String url = "'https://api.eu.apiconnect.ibmcloud.com/hella-ventures-car-diagnostic-api/api/v1/dtc" + 
+     		" * ?client_id=398f6f60-8d12-439c-938f-1162405d3d44&client_secret=A8xV8kP0hH7oW8tS2kT4cT5tA2pL2sY4rE5rW6rF0dN6dA1yV4\r\n" + 
+     		" * &code_id="+id+"&vin="+vin+"&language="+lan+"' --header 'accept: application/json' --header 'content-type: application/json'";
+     URL obj;
+	try {
+		obj = new URL(url);
+	
      HttpURLConnection con = (HttpURLConnection) obj.openConnection();
      // optional default is GET
      con.setRequestMethod("GET");
@@ -28,15 +37,33 @@ public class odbrequest {
      	response.append(inputLine);
      }
      in.close();
+	
      //print in String
      System.out.println(response.toString());
-String traduccionJSON = translationResult.toString();
-JsonParser parser = new JsonParser();
-JsonObject rootObj =
-parser.parse(traduccionJSON).getAsJsonObject();
-JsonArray traducciones = rootObj.getAsJsonArray("translations");
-String traduccionPrimera = palabra;
-if(traducciones.size()>0)
-traduccionPrimera =
-traducciones.get(0).getAsJsonObject().get("translation").getAsString();
-return traduccionPrimera;
+     //Read JSON response and print
+     String traduccionJSON =response.toString();
+     JsonParser parser = new JsonParser();
+     JsonObject rootObj = parser.parse(traduccionJSON).getAsJsonObject();
+     JsonArray traducciones = rootObj.getAsJsonArray("dtc_data");
+     String traduccionPrimera = id;
+     if(traducciones.size()>0)
+     traduccionPrimera = "System: "+traducciones.get(0).getAsJsonObject().get("system").getAsString()+" Fault: "+traducciones.get(0).getAsJsonObject().get("fault").getAsString();
+     return traduccionPrimera;
+	} catch (Exception e) {
+		 return e.toString();
+	}
+	
+	}
+     /*
+     System.out.println("statusMessage- "+myResponse.getString("statusMessage"));
+     System.out.println("ipAddress- "+myResponse.getString("ipAddress"));
+     System.out.println("countryCode- "+myResponse.getString("countryCode"));
+     System.out.println("countryName- "+myResponse.getString("countryName"));
+     System.out.println("regionName- "+myResponse.getString("regionName"));
+     System.out.println("cityName- "+myResponse.getString("cityName"));
+     System.out.println("zipCode- "+myResponse.getString("zipCode"));
+     System.out.println("latitude- "+myResponse.getString("latitude"));
+     System.out.println("longitude- "+myResponse.getString("longitude"));
+     System.out.println("timeZone- "+myResponse.getString("timeZone"));
+*/
+}

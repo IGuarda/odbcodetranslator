@@ -52,7 +52,7 @@ public class Controller extends HttpServlet {
 					while (iterator.hasNext()&&i>0) {
 						s=iterator.next().getName();
 						if (s.charAt(0)!='$'){
-					        out.println("<a href=\"insertar?palabra=" +s+"\">"+s+"</a> <br>");
+					        out.println("<a href=\"insertar?codigo=" +s+"\">"+s+"</a> <br>");
 					        i--;
 						}
 				    }

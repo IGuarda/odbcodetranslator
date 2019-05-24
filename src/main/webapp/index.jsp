@@ -14,7 +14,7 @@
 <li><a href="insertar?palabra=P0001">Insertar</a></li>
 
 </ul>
-<form action="/listar" >
+<form action="insertar" >
 <input type="text" name="palabra" value="P0001"><br>
  <input type="submit" value="Submit">
 </form>

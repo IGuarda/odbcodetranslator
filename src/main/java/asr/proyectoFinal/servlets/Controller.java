@@ -21,6 +21,7 @@ import javax.servlet.http.HttpServletResponse;
 import asr.proyectoFinal.dao.CloudantPalabraStore;
 import asr.proyectoFinal.dominio.Palabra;
 import asr.proyectoFinal.services.Traductor;
+import asr.proyectoFinal.odbapi.odbrequest;
 
 /**
  * Servlet implementation class Controller
@@ -61,7 +62,10 @@ public class Controller extends HttpServlet {
 					}
 					else
 					{
-						parametro = Traductor.translate(parametro, "es", "en", false);
+						//parametro = Traductor.translate(parametro, "es", "en", false);
+						//parametro = Traductor.translate(parametro);
+
+						parametro = odbrequest.getodbcode(parametro,"WBAES26C05D","EN");
 						palabra.setName(parametro);
 						store.persist(palabra);
 					    out.println(String.format("Almacenada la palabra: %s", palabra.getName()));			    	  

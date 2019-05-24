@@ -6,7 +6,6 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL; 
 /*curl --request GET --url 'https://api.eu.apiconnect.ibmcloud.com/hella-ventures-car-diagnostic-api/api/v1/dtc
  * ?client_id=398f6f60-8d12-439c-938f-1162405d3d44&client_secret=A8xV8kP0hH7oW8tS2kT4cT5tA2pL2sY4rE5rW6rF0dN6dA1yV4
@@ -41,14 +40,14 @@ public class odbrequest {
      //print in String
      System.out.println(response.toString());
      //Read JSON response and print
-     String traduccionJSON =response.toString();
+     String JSON =response.toString();
      JsonParser parser = new JsonParser();
-     JsonObject rootObj = parser.parse(traduccionJSON).getAsJsonObject();
-     JsonArray traducciones = rootObj.getAsJsonArray("dtc_data");
-     String traduccionPrimera = id;
-     if(traducciones.size()>0)
-     traduccionPrimera = "System: "+traducciones.get(0).getAsJsonObject().get("system").getAsString()+" Fault: "+traducciones.get(0).getAsJsonObject().get("fault").getAsString();
-     return traduccionPrimera;
+     JsonObject rootObj = parser.parse(JSON).getAsJsonObject();
+     JsonArray datos = rootObj.getAsJsonArray("dtc_data");
+     String salida = id;
+     if(datos.size()>0)
+    	 salida = "System: "+datos.get(0).getAsJsonObject().get("system").getAsString()+" Fault: "+datos.get(0).getAsJsonObject().get("fault").getAsString();
+     return salida;
 	} catch (Exception e) {
 		 return e.toString();
 	}

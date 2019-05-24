@@ -85,7 +85,7 @@ public class Controller extends HttpServlet {
 						palabra.setName(odbcode);
 						store.persist(palabra);
 					    out.println(String.format("resultado:<br> %s <br>", fallo));		
-					    out.println(Traductor.translate("hola");
+					    out.println(Traductor.translate("hola"));
 						} catch (Exception e) {
 							out.println("error en el codigo de fallo "+e.toString());
 						}

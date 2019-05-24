@@ -11,7 +11,7 @@
 <p>Opciones sobre la base de daros de ignacio Díaz-Guardamino:</p>
 <ul>
 <li><a href="listar">Listar</a></li>
-<li><a href="insertar?palabra=saludos">Insertar</a></li>
+<li><a href="insertar?palabra=P0001">Insertar</a></li>
 </ul>
 <p>test deploy git</p>
 </body>

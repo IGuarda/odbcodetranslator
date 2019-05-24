@@ -66,7 +66,7 @@ public class Controller extends HttpServlet {
 				{
 					out.println("usage: /insertar?palabra=palabra_a_traducir");
 				}
-				if(odbcode==null)
+				if(vin==null)
 				{
 					vin="WBAES26C05D";//vin de muestra
 				}

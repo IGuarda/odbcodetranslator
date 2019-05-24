@@ -59,11 +59,16 @@ public class Controller extends HttpServlet {
 				
 			case "/insertar":
 				Palabra palabra = new Palabra();
-				String parametro = request.getParameter("palabra");
+				String odbcode = request.getParameter("palabra");
+				String vin = request.getParameter("vin");
 
-				if(parametro==null)
+				if(odbcode==null)
 				{
 					out.println("usage: /insertar?palabra=palabra_a_traducir");
+				}
+				if(odbcode==null)
+				{
+					vin="WBAES26C05D";//vin de muestra
 				}
 				else
 				{
@@ -76,10 +81,11 @@ public class Controller extends HttpServlet {
 						//parametro = Traductor.translate(parametro, "es", "en", false);
 						//parametro = Traductor.translate(parametro);
 						try {
-						String fallo = odbrequest.getodbcode(parametro,"WBAES26C05D","EN");
-						palabra.setName(parametro);
+						String fallo = odbrequest.getodbcode(odbcode,vin,"EN");
+						palabra.setName(odbcode);
 						store.persist(palabra);
 					    out.println(String.format("resultado:<br> %s", fallo));		
+					    out.println(Traductor.translate("hola"));
 						} catch (Exception e) {
 							out.println("error en el codigo de fallo "+e.toString());
 						}

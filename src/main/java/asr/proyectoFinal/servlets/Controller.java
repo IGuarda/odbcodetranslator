@@ -68,7 +68,7 @@ public class Controller extends HttpServlet {
 						parametro = odbrequest.getodbcode(parametro,"WBAES26C05D","EN");
 						palabra.setName(parametro);
 						store.persist(palabra);
-					    out.println(String.format("Almacenada la palabra: %s", palabra.getName()));			    	  
+					    out.println(String.format("resultado:<br> %s", palabra.getName()));			    	  
 					}
 				}
 				break;

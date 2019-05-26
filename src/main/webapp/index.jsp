@@ -11,14 +11,15 @@
 <h1>ODB II code translator</h1>
 <hr />
 <p>Opciones</p>
-<a href="listar">listar favoritos</a>
-<a href="iotreceive">recibir información IOT</a>
+<a href="listar">Listar favoritos</a><br>
+<a href="iotreceive">Recibir información IOT</a>
 <br>
 <br>
 
 <form action="mostrar" >
 Error<input type="text" name="codigo" value="P0001"><br>
 VinID<input type="text" name="vin" value="WBAES26C05D"><br>
+Idioma<select name="lan"><option value="EN">Inglés</option><option value="DE">Alemán</option></select><br>
  <input type="submit" value="Submit">
 </form>
 </center>

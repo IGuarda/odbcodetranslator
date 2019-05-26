@@ -161,6 +161,7 @@ public class Controller extends HttpServlet {
 				Palabra palabra11 = new Palabra();
 				String odbcode11 = request.getParameter("codigo");
 				String vin11 = request.getParameter("vin");
+				String lan = request.getParameter("lan");
 
 				if(odbcode11==null)
 				{
@@ -172,8 +173,12 @@ public class Controller extends HttpServlet {
 					{
 						vin11="WBAES26C05D";//vin de muestra
 					}
+					if(lan==null)
+					{
+						lan="EN";//vin de muestra
+					}
 					try {
-						String fallo = odbrequest.getodbcode(odbcode11,vin11,"EN");
+						String fallo = odbrequest.getodbcode(odbcode11,vin11,lan);
 						palabra11.setName(odbcode11);
 					    out.println(String.format("resultado:<br> %s <br><a href=\"insertar?codigo=%s&vin=%s\">Guardar en favoritos</a>", fallo,odbcode11,vin11));		
 					    //out.println(Traductor.translate("hola"));

@@ -83,7 +83,7 @@ public class Controller extends HttpServlet {
 						}
 				    }
 					if(send==0) {
-						out.println("<br>no se ha recibido informaci&oacute;n, esta p&aacute;gina se actualiza cada 10 segundos.<script language=\"javascript\">" + 
+						out.println("<br>No se ha recibido informaci&oacute;n, esta p&aacute;gina se actualiza cada 10 segundos.<script language=\"javascript\">" + 
 								"setTimeout(function(){\r\n" + 
 								"   window.location.reload(1);\r\n" + 
 								"}, 30000);\r\n" + 
@@ -116,7 +116,7 @@ public class Controller extends HttpServlet {
 						try {
 						palabra.setName("$"+odbcode);
 						store.persist(palabra);
-					    out.println("informaci&oacute;n enviada,<br> <a href=\"iot.jsp\">enviar mas informaci&oacute;n</a> <br> ");		
+					    out.println("Informaci&oacute;n enviada,<br> <a href=\"iot.jsp\">enviar mas informaci&oacute;n</a> <br> ");		
 					    //out.println(Traductor.translate("hola"));
 						} catch (Exception e) {
 							out.println("error en el codigo de fallo "+e.toString());
@@ -149,10 +149,10 @@ public class Controller extends HttpServlet {
 						try {
 						palabra1.setName(odbcode1);
 						store.persist(palabra1);
-					    out.println("informaci&oacute;n guardada correctamente, <br><a href=\"listar\">mostrar favoritos</a> <br> ");		
+					    out.println("Informaci&oacute;n guardada correctamente, <br><a href=\"listar\">mostrar favoritos</a> <br> ");		
 					    //out.println(Traductor.translate("hola"));
 						} catch (Exception e) {
-							out.println("error en el codigo de fallo "+e.toString());
+							out.println("Error en el codigo de fallo "+e.toString());
 						}
 					}
 				}

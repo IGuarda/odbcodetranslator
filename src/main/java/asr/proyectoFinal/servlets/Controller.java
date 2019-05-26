@@ -116,7 +116,7 @@ public class Controller extends HttpServlet {
 						try {
 						palabra.setName("$"+odbcode);
 						store.persist(palabra);
-					    out.println("información enviada, <a href=\"iot.jsp\">enviar mas información</a> <br> ");		
+					    out.println("informaci&oacute;n enviada,<br> <a href=\"iot.jsp\">enviar mas informaci&oacute;n</a> <br> ");		
 					    //out.println(Traductor.translate("hola"));
 						} catch (Exception e) {
 							out.println("error en el codigo de fallo "+e.toString());

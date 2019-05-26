@@ -6,9 +6,11 @@
 <title>Proyecto ASR</title>
 </head>
 <body>
-<h1>Ejemplo de Proyecto de ASR con Cloudant ahora con DevOps</h1>
+<center>
+<a href="https://asrtomcatejemplocloudantguarda.eu-gb.mybluemix.net/asrTomcatEjemploCloudant"><img src="head.png" ></a>
+<h1>ODB II code translator</h1>
 <hr />
-<p>Opciones sobre la base de daros de ignacio Díaz-Guardamino:</p>
+<p>Opciones</p>
 <ul>
 <li><a href="listar">listar favoritos</a></li>
 <li><a href="iotreceive">recibir información IOT</a></li>
@@ -20,5 +22,6 @@
 <input type="text" name="vin" value="WBAES26C05D"><br>
  <input type="submit" value="Submit">
 </form>
+</center>
 </body>
 </html>

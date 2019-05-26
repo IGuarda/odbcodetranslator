@@ -34,7 +34,7 @@ public class Controller extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
 		PrintWriter out = response.getWriter();
-		out.println("<html><head><meta charset=\"UTF-8\"></head><body>");
+		out.println("<html><head><meta charset=\"UTF-8\"></head><body><center><a href=\"https://asrtomcatejemplocloudantguarda.eu-gb.mybluemix.net/asrTomcatEjemploCloudant\"><img src=\"head.png\" ></a>");
 		
 		CloudantPalabraStore store = new CloudantPalabraStore();
 		System.out.println(request.getServletPath());
@@ -184,7 +184,7 @@ public class Controller extends HttpServlet {
 				}
 				break;
 		}
-		out.println("</html>");
+		out.println("</center></html>");
 	}
 
 	/**

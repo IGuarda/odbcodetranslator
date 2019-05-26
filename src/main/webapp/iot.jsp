@@ -6,12 +6,15 @@
 <title>iotsend</title>
 </head>
 <body>
-<h1>Envio de datos por iot</h1>
+<center>
+<a href="https://asrtomcatejemplocloudantguarda.eu-gb.mybluemix.net/asrTomcatEjemploCloudant"><img src="head.png" ></a>
+<h1>Envio de datos iot</h1>
 <hr />
 
 <form action="iotsend" >
 <input type="text" name="codigo" value="P0001"><br>
  <input type="submit" value="Submit">
 </form>
+</center>
 </body>
 </html>

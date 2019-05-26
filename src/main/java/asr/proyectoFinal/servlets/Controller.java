@@ -52,7 +52,7 @@ public class Controller extends HttpServlet {
 					while (iterator.hasNext()&&i>0) {
 						s=iterator.next().getName();
 						if (s.charAt(0)!='$'){
-					        out.println("<a href=\"insertar?codigo=" +s+"\">"+s+"</a> <br>");
+					        out.println("<a href=\"mostrar?codigo=" +s+"\">"+s+"</a> <br>");
 					        i--;
 						}
 				    }
@@ -62,19 +62,19 @@ public class Controller extends HttpServlet {
 				if(store.getDB() == null)
 					  out.println("No hay DB");
 				else {
-
-					out.println("Palabras en la BD Cloudant:<br />"  );
+					String url="https://asrtomcatejemplocloudantguarda.eu-gb.mybluemix.net/asrTomcatEjemploCloudant/iot.jsp";
+					out.println("Palabras en la BD Cloudant:<br /><iframe src=\"https://api.qrserver.com/v1/create-qr-code/?size=150x150&data="+url+"\" height=\"150\" width=\"150\"></iframe><br>"  );
 					Iterator<Palabra> iterator = store.getAll().iterator();
 					Palabra s;
 					int send=0;
 					while (iterator.hasNext()) {
 						s=iterator.next();
 						String cod=s.getName();
-						if (cod.charAt(0)!='$'){
+						if (cod.charAt(0)=='$'){
 							send=1;
 							store.delete(s.get_id());
 							try {
-								String fallo1 = odbrequest.getodbcode(cod,"WBAES26C05D","EN");
+								String fallo1 = odbrequest.getodbcode(cod.substring(1),"WBAES26C05D","EN");
 
 						        out.println(fallo1+"<br>");
 							} catch (Exception e) {

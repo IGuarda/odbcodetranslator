@@ -34,7 +34,7 @@ public class Controller extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
 		PrintWriter out = response.getWriter();
-		out.println("<html><head><meta charset=\"UTF-8\"></head><body><center><a href=\"https://asrtomcatejemplocloudantguarda.eu-gb.mybluemix.net/asrTomcatEjemploCloudant\"><img src=\"head.png\" ></a>");
+		out.println("<html><head><meta charset=\"UTF-8\"></head><body><center><a href=\"http://odbcodetranslator.apic.eu-gb.mybluemix.net/asrTomcatEjemploCloudant\"><img src=\"head.png\" ></a><br>");
 		
 		CloudantPalabraStore store = new CloudantPalabraStore();
 		System.out.println(request.getServletPath());
@@ -62,7 +62,7 @@ public class Controller extends HttpServlet {
 				if(store.getDB() == null)
 					  out.println("No hay DB");
 				else {
-					String url="https://asrtomcatejemplocloudantguarda.eu-gb.mybluemix.net/asrTomcatEjemploCloudant/iot.jsp";
+					String url="http://odbcodetranslator.apic.eu-gb.mybluemix.net/asrTomcatEjemploCloudant/iot.jsp";
 					out.println("<H2>Receptor en movil</H2><br /><iframe src=\"https://api.qrserver.com/v1/create-qr-code/?size=150x150&data="+url+"\" height=\"150\" width=\"150\"></iframe><br>"  );
 					Iterator<Palabra> iterator = store.getAll().iterator();
 					Palabra s;

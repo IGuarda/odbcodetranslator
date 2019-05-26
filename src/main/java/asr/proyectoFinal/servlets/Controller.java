@@ -45,7 +45,7 @@ public class Controller extends HttpServlet {
 					  out.println("No hay DB");
 				else {
 
-					out.println("Palabras en la BD Cloudant:<br />"  );
+					out.println("<H2>Favoritos</H2><br />"  );
 					Iterator<Palabra> iterator = store.getAll().iterator();
 					String s;
 					int i=100;
@@ -63,7 +63,7 @@ public class Controller extends HttpServlet {
 					  out.println("No hay DB");
 				else {
 					String url="https://asrtomcatejemplocloudantguarda.eu-gb.mybluemix.net/asrTomcatEjemploCloudant/iot.jsp";
-					out.println("Palabras en la BD Cloudant:<br /><iframe src=\"https://api.qrserver.com/v1/create-qr-code/?size=150x150&data="+url+"\" height=\"150\" width=\"150\"></iframe><br>"  );
+					out.println("<H2>Receptor en movil</H2><br /><iframe src=\"https://api.qrserver.com/v1/create-qr-code/?size=150x150&data="+url+"\" height=\"150\" width=\"150\"></iframe><br>"  );
 					Iterator<Palabra> iterator = store.getAll().iterator();
 					Palabra s;
 					int send=0;
@@ -149,7 +149,7 @@ public class Controller extends HttpServlet {
 						try {
 						palabra1.setName(odbcode1);
 						store.persist(palabra1);
-					    out.println("información guardada correctamente, <a href=\"listar\">mostrar favoritos</a> <br> ");		
+					    out.println("informaci&oacute;n guardada correctamente, <br><a href=\"listar\">mostrar favoritos</a> <br> ");		
 					    //out.println(Traductor.translate("hola"));
 						} catch (Exception e) {
 							out.println("error en el codigo de fallo "+e.toString());

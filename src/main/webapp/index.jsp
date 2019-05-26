@@ -11,6 +11,7 @@
 <p>Opciones sobre la base de daros de ignacio Díaz-Guardamino:</p>
 <ul>
 <li><a href="listar">listar favoritos</a></li>
+<li><a href="iotreceive">recibir información IOT</a></li>
 <%--<li><a href="insertar?palabra=P0001">Insertar</a></li> --%>
 
 </ul>

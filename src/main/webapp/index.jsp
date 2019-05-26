@@ -17,8 +17,8 @@
 <br>
 
 <form action="mostrar" >
-<input type="text" name="codigo" value="P0001"><br>
-<input type="text" name="vin" value="WBAES26C05D"><br>
+Error<input type="text" name="codigo" value="P0001"><br>
+VinID<input type="text" name="vin" value="WBAES26C05D"><br>
  <input type="submit" value="Submit">
 </form>
 </center>

@@ -34,7 +34,7 @@ public class Controller extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
 		PrintWriter out = response.getWriter();
-		out.println("<html><head><meta charset=\"UTF-8\"></head><body><center><a href=\"http://odbcodetranslator.apic.eu-gb.mybluemix.net/asrTomcatEjemploCloudant\"><img src=\"head.png\" ></a><br>");
+		out.println("<html><head><meta charset=\"UTF-8\"></head><body><center><a href=\"http://odbcodetranslator.apic.eu-gb.mybluemix.net/asrTomcatEjemploCloudant\"><img src=\"head.png\" ></a><br><br>");
 		
 		CloudantPalabraStore store = new CloudantPalabraStore();
 		System.out.println(request.getServletPath());
@@ -76,14 +76,14 @@ public class Controller extends HttpServlet {
 							try {
 								String fallo1 = odbrequest.getodbcode(cod.substring(1),"WBAES26C05D","EN");
 
-						        out.println(fallo1+"<br>");
+						        out.println("<br>"+fallo1+"<br> <a href=\"iotreceive\">recibir siguiente</a> ");
 							} catch (Exception e) {
 								out.println("servicio temporalmente no disponible");
 							}					        
 						}
 				    }
 					if(send==0) {
-						out.println("no se ha recibido información, esta página se actualiza cada 10 segundos.<script language=\"javascript\">" + 
+						out.println("<br>no se ha recibido informaci&oacute;n, esta p&aacute;gina se actualiza cada 10 segundos.<script language=\"javascript\">" + 
 								"setTimeout(function(){\r\n" + 
 								"   window.location.reload(1);\r\n" + 
 								"}, 30000);\r\n" + 
